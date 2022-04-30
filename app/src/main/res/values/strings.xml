@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Delivery App</string>
+    <string name="database">sample.db</string>
+    <string name="failed_loading_msg">Something went wrong</string>
+    <string name="failed_network_msg">No internet connection</string>
+    <string name="retry">Retry</string>
+    <string name="label_delivery">Delivery</string>
+    <string name="label_title">Title :</string>
+    <string name="label_description">Description :</string>
+    <string name="chip_pending">PENDING</string>
+    <string name="delivery_state_pending">instant_pending</string>
+</resources>
