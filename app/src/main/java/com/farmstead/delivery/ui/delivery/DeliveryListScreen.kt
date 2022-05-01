@@ -1,6 +1,7 @@
 package com.farmstead.delivery.ui
 
 import android.content.Context
+import android.net.Uri
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
@@ -14,11 +15,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.farmstead.delivery.R
-import com.farmstead.delivery.persistency.LocalDataWrapper
 import com.farmstead.delivery.domain.CurrentDelivery
 import com.farmstead.delivery.domain.toCurrentDelivery
+import com.farmstead.delivery.persistency.LocalDataWrapper
+import com.farmstead.delivery.ui.Screens.Companion.DELIVERY
 import com.farmstead.delivery.viewmodel.DeliveryViewModel
-import kotlinx.coroutines.flow.collect
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
 @Composable
@@ -58,11 +60,16 @@ fun DeliveryListScreen(
         },
         content = {
             Content(viewModel = deliveryViewModel) { deliveries ->
-                VerticalCollection(deliveries) { delivery ->
-                    scope.launch {
-                        localDataWrapper.save(delivery.toCurrentDelivery())
-                    }
-                }
+                DeliveryVerticalCollection(deliveries,
+                    onDeliveryClick = { delivery ->
+                        scope.launch {
+                            localDataWrapper.save(delivery.toCurrentDelivery())
+                        }
+                }, onOrderItemClick = { delivery ->
+                    val deliveryJson = Uri.encode(Gson().toJson(delivery))
+                    navController.navigate(Screens.Cart.title.replace("{$DELIVERY}",
+                        deliveryJson))
+                })
             }
         })
 }

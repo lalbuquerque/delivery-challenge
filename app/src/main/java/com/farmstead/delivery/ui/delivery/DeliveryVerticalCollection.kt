@@ -23,15 +23,18 @@ import com.farmstead.delivery.ui.common.ChipLabel
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun VerticalCollection(
+fun DeliveryVerticalCollection(
     deliveries: List<Delivery>,
-    onItemClick: (Delivery) -> Unit
+    onDeliveryClick: (Delivery) -> Unit,
+    onOrderItemClick: (Delivery) -> Unit
 ) {
     LazyColumn {
         items(
             items = deliveries,
             itemContent = { delivery ->
-                VerticalListItem(delivery = delivery, onItemClick = onItemClick)
+                VerticalListItem(delivery = delivery,
+                    onItemClick = onDeliveryClick,
+                    onOrderItemClick = onOrderItemClick)
                 ListItemDivider()
             }
         )
@@ -41,7 +44,8 @@ fun VerticalCollection(
 @Composable
 private fun VerticalListItem(
     delivery: Delivery,
-    onItemClick: (Delivery) -> Unit
+    onItemClick: (Delivery) -> Unit,
+    onOrderItemClick: (Delivery) -> Unit
 ) {
     val typography = MaterialTheme.typography
     Card(
@@ -76,21 +80,22 @@ private fun VerticalListItem(
                 }
             }
             Spacer(modifier = Modifier.height(10.dp))
-            OrderItemsRow(delivery.orderItemImageUrls)
+            OrderItemsRow(delivery, onOrderItemClick)
             Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }
 
 @Composable
-private fun OrderItemsRow(imagesUrls: List<String>) {
+private fun OrderItemsRow(delivery: Delivery, onClick: (Delivery) -> Unit) {
     Row(horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier.horizontalScroll(rememberScrollState())) {
 
-        imagesUrls.take(4).forEachIndexed { index, url ->
+        delivery.orderItemImageUrls.take(4).forEachIndexed { index, url ->
             GlideImage(imageModel = url, modifier = Modifier
                 .width(100.dp)
-                .height(100.dp))
+                .height(100.dp)
+                .clickable { onClick(delivery) })
 
             Spacer(modifier = Modifier.width(10.dp))
 

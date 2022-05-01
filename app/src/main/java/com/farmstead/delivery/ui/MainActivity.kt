@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.navigation.navArgument
 import com.farmstead.delivery.persistency.LocalDataWrapper
 import com.farmstead.delivery.domain.CurrentDelivery
 import com.farmstead.delivery.ui.theme.ComposeTheme
+import com.farmstead.delivery.util.DeliveryNavType
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -37,8 +39,19 @@ class MainActivity : AppCompatActivity() {
                     popExitTransition = { ExitTransition.None }) {
 
                     composable(Screens.Delivery.title) {
-                        DeliveryListScreen(applicationContext, navController,
-                            localDataWrapper = dataStoreLocalDataWrapper)
+                        DeliveryListScreen(
+                            applicationContext, navController,
+                            localDataWrapper = dataStoreLocalDataWrapper
+                        )
+                    }
+
+                    composable(
+                        Screens.Cart.title,
+                        arguments = listOf(navArgument(Screens.DELIVERY) {
+                            type = DeliveryNavType()
+                        })
+                    ) {
+                        CartScreen(it.arguments?.getParcelable(Screens.DELIVERY), navController)
                     }
                 }
             }

@@ -1,8 +1,12 @@
 package com.farmstead.delivery.domain
 
+import android.os.Parcelable
 import com.farmstead.delivery.persistency.room.delivery.DbDelivery
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class Delivery (
     val id: Long,
 
@@ -34,8 +38,8 @@ data class Delivery (
     val orderItemImageUrls: List<String>,
 
     @SerializedName("order_items")
-    val orderItems: List<OrderItem>,
-)
+    val orderItems: @RawValue List<OrderItem>,
+) : Parcelable
 
 fun Delivery.getBasicInfo() = "${this.deliveryDayAbbreviated} ${this.deliveryDate} ${this.deliveryTimeRange}"
 fun Delivery.isPending() = deliveryState == "instant_pending"
