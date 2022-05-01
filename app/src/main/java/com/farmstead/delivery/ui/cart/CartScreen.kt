@@ -1,4 +1,4 @@
-package com.farmstead.delivery.ui
+package com.farmstead.delivery.ui.cart
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons

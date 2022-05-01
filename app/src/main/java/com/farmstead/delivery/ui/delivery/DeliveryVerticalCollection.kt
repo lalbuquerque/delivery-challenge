@@ -1,4 +1,4 @@
-package com.farmstead.delivery.ui
+package com.farmstead.delivery.ui.delivery
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll

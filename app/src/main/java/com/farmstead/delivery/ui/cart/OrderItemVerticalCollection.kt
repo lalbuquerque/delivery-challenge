@@ -1,4 +1,4 @@
-package com.farmstead.delivery.ui
+package com.farmstead.delivery.ui.cart
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn

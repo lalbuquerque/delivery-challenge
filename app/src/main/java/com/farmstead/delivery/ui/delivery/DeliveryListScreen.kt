@@ -1,4 +1,4 @@
-package com.farmstead.delivery.ui
+package com.farmstead.delivery.ui.delivery
 
 import android.content.Context
 import android.net.Uri
@@ -18,6 +18,8 @@ import com.farmstead.delivery.R
 import com.farmstead.delivery.domain.CurrentDelivery
 import com.farmstead.delivery.domain.toCurrentDelivery
 import com.farmstead.delivery.persistency.LocalDataWrapper
+import com.farmstead.delivery.ui.Content
+import com.farmstead.delivery.ui.Screens
 import com.farmstead.delivery.ui.Screens.Companion.DELIVERY
 import com.farmstead.delivery.viewmodel.DeliveryViewModel
 import com.google.gson.Gson
@@ -67,7 +69,8 @@ fun DeliveryListScreen(
                         }
                 }, onOrderItemClick = { delivery ->
                     val deliveryJson = Uri.encode(Gson().toJson(delivery))
-                    navController.navigate(Screens.Cart.title.replace("{$DELIVERY}",
+                    navController.navigate(
+                        Screens.Cart.title.replace("{$DELIVERY}",
                         deliveryJson))
                 })
             }
