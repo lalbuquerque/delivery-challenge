@@ -8,7 +8,4 @@ interface DeliveryService {
 
     @GET("api/v1/store/deliveries/upcoming")
     suspend fun getUpcomingDeliveries(@Query("hub_id") hubId: String, @Query("ak") ak: String): Deliveries
-
-//    @GET("androidexo-se")
-//    suspend fun getDashboard(): Dashboard
 }

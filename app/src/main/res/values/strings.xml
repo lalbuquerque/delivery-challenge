@@ -3,6 +3,7 @@
     <string name="database">sample.db</string>
     <string name="failed_loading_msg">Something went wrong</string>
     <string name="failed_network_msg">No internet connection</string>
+    <string name="failed_not_authorized">You\'re not authorized to see this :(</string>
     <string name="retry">Retry</string>
     <string name="label_delivery">Delivery</string>
     <string name="label_title">Title :</string>
