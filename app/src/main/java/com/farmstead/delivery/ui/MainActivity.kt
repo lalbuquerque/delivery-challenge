@@ -13,6 +13,7 @@ import com.farmstead.delivery.ui.cart.CartScreen
 import com.farmstead.delivery.ui.delivery.DeliveryListScreen
 import com.farmstead.delivery.ui.theme.ComposeTheme
 import com.farmstead.delivery.util.DeliveryNavType
+import com.farmstead.delivery.util.ItemNavType
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -54,6 +55,15 @@ class MainActivity : AppCompatActivity() {
                         })
                     ) {
                         CartScreen(it.arguments?.getParcelable(Screens.DELIVERY), navController)
+                    }
+
+                    composable(
+                        Screens.Product.title,
+                        arguments = listOf(navArgument(Screens.ITEM) {
+                            type = ItemNavType()
+                        })
+                    ) {
+                        ProductScreen(it.arguments?.getParcelable(Screens.ITEM), navController)
                     }
                 }
             }

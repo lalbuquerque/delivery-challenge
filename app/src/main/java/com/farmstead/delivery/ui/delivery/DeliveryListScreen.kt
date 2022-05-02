@@ -1,5 +1,6 @@
 package com.farmstead.delivery.ui.delivery
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import androidx.compose.foundation.layout.Box
@@ -26,6 +27,7 @@ import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
 @Composable
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 fun DeliveryListScreen(
     context: Context,
     navController: NavHostController,

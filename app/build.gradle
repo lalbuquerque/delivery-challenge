@@ -75,6 +75,8 @@ dependencies {
     implementation "androidx.activity:activity-compose:$versions.activityCompose"
     implementation "com.google.accompanist:accompanist-swiperefresh:$versions.accompanist"
     implementation "com.google.accompanist:accompanist-navigation-animation:$versions.accompanist"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$versions.accompanist"
+    implementation "com.google.accompanist:accompanist-insets:$versions.accompanist"
 
     // network
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"

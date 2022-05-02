@@ -1,5 +1,6 @@
 package com.farmstead.delivery.ui.cart
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -38,7 +39,7 @@ private fun VerticalListItem(
     onItemClick: (OrderItem) -> Unit
 ) {
     val typography = MaterialTheme.typography
-    Row {
+    Row(modifier = Modifier.clickable( onClick = { onItemClick(orderItem)})) {
         GlideImage(imageModel = orderItem.item.image.url, modifier = Modifier
             .clip(RoundedCornerShape(15.dp, 15.dp, 15.dp, 15.dp))
             .width(125.dp)

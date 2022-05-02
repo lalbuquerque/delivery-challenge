@@ -14,7 +14,7 @@ import timber.log.Timber
 @Composable
 fun <T> Content(
     viewModel: BaseViewModel<T>,
-    SuccessScreen: @Composable() (t: T) -> Unit
+    SuccessScreen: @Composable (t: T) -> Unit
 ) {
     when (val viewState = viewModel.stateFlow.collectAsState().value) {
 
