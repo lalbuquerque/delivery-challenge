@@ -1,4 +1,4 @@
-package com.farmstead.delivery.ui
+package com.farmstead.delivery.ui.product
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
