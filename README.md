@@ -9,5 +9,3 @@
 ![farmstead-challenge-2-resize](https://user-images.githubusercontent.com/2593625/166195669-8f991bcc-695a-4698-921c-6fd1d930902d.gif)
 
 PS: I'm very much of a small commits adept but unfortunately I couldn't apply the concept in this challenge for a matter of time (I'm sorry guys).
-
-PS2: There's an issue with Jetpack Compose's `LazyColumn` that might generate a crash in some devices on `CartScreen` (the downside of using very new things... 😅). It's total internal from the API and the solution is being tracked here: https://issuetracker.google.com/issues/229752147
